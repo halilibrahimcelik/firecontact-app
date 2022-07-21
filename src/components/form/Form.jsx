@@ -4,7 +4,7 @@ import {AiTwotonePhone} from "react-icons/ai"
 const Form = () => {
   return (
     <Fragment>
-        <form >
+        <form  className='col-4 d-flex flex-column align-items-center justify-content-center'>
 <div className="input-group mb-3">
   <span className="input-group-text" id="basic-addon1"><FaUserAlt/> </span>
   <input type="text" className="form-control" placeholder="Username" />

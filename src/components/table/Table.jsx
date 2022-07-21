@@ -5,7 +5,7 @@ import {MdDelete} from "react-icons/md"
 const Table = () => {
   return (
     <Fragment>
-        <table className="table table-striped">
+        <table className="col-sm table table-striped ">
   <thead>
     <tr>
       <th scope="col">Username</th>
