@@ -1,6 +1,8 @@
 import React, { Fragment,useRef } from 'react'
 import {FaUserAlt} from "react-icons/fa";
 import {AiTwotonePhone} from "react-icons/ai"
+
+import {toast} from "react-toastify"
 const Form = ({createUser}) => {
   const newNameInput = useRef("");
   const newPhoneInput = useRef("");
@@ -11,6 +13,15 @@ const Form = ({createUser}) => {
     const enteredPhone = newPhoneInput.current.value;
     const enteredGender = newGenderInput.current.value;
     createUser(enteredGender,enteredName,enteredPhone);
+    toast.success('You have succesfully added a contact!', {
+      position: "top-right",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
     e.target.reset();
 
 
@@ -44,14 +55,14 @@ const Form = ({createUser}) => {
          required aria-label="Default select example"
          ref={newGenderInput}
          >
-          <option selected>Choose..</option>
+       
           <option value="male">male</option>
           <option value="female">female</option>
           <option value={null}>rather not say</option>
         </select>
         </div>
         <div className="input-group mb-3">
-        <button type="submit" class="btn btn-danger mb-3 w-100">Add the User</button>
+        <button type="submit" className="btn btn-danger mb-3 w-100">Add the User</button>
         </div>
           </form>
       </div>

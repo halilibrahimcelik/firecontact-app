@@ -1,8 +1,24 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import {FaEdit} from "react-icons/fa";
-import {MdDelete} from "react-icons/md"
+import {MdDelete} from "react-icons/md";
+import EditModule from '../editModule/EditModule';
+import {toast} from "react-toastify"
+const Table = ({users,updateUser,deleteUser}) => {
+  const [identity,selectedId]=useState("");
+  const handleDelete=(id)=>{
+    console.log(id)
+    deleteUser(id);
+    toast.success('You have succesfully deleted a contact!', {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+  }
 
-const Table = () => {
   return (
     <Fragment>
         <div className='col-sm'>
@@ -15,16 +31,34 @@ const Table = () => {
                 <th scope="col">Gender</th>
                 <th scope="col">Delete</th>
                 <th scope="col">Edit</th>
+         
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td> <MdDelete/> </td>
-                <td> <FaEdit/> </td>
-              </tr>
+
+              {users.map(user=>{
+                const {id,name,gender,phone}=user;
+   return  <tr key={id}>
+      <th scope="row">{name} </th>
+      <td>{phone}  </td>
+      <td>{gender} </td>
+      <td onClick={()=> handleDelete(id)}> <MdDelete/> </td>
+      <td
+        data-bs-toggle="modal"
+        data-bs-target="#edit-modal"
+      >
+      <FaEdit 
+      onClick={()=>selectedId(id)}
+      />
+      </td>
+      <td >
+        <EditModule   {...user} identity={identity} updateUser={updateUser} />
+      </td>
+  
+       </tr>
+ 
+              })}
+          
              
              
              
