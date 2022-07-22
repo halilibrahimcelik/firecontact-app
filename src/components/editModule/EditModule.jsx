@@ -1,12 +1,15 @@
-import React, { Fragment, useEffect, useRef } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import {toast} from "react-toastify"
 
 const EditModule = (props) => {
    const { updateUser,identity,users}=props
+   
 console.log(users,identity)
-// let filteredArray;
-let   filteredArray=users.filter(user=>user.id===(identity?identity:user.id) );
-filteredArray=filteredArray?filteredArray:users;
+
+let  filteredArray=users.filter(user=>user.id===(identity?identity:user.id) );
+filteredArray=(filteredArray.length===0)?users:filteredArray
+console.log(filteredArray)
+
 const {name,gender,phone}=filteredArray[0];
 
 const newNameInput = useRef();
