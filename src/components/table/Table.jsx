@@ -52,7 +52,7 @@ const Table = ({users,updateUser,deleteUser}) => {
       />
       </td>
       <td >
-        <EditModule   {...user} identity={identity} updateUser={updateUser} />
+        <EditModule   users={users} identity={identity} updateUser={updateUser} />
       </td>
   
        </tr>

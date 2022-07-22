@@ -1,17 +1,30 @@
-import React, { Fragment, useRef } from "react";
+import React, { Fragment, useEffect, useRef } from "react";
 import {toast} from "react-toastify"
 
 const EditModule = (props) => {
-   const { updateUser,identity,name,gender,phone}=props
+   const { updateUser,identity,users}=props
+console.log(users,identity)
+// let filteredArray;
+const   filteredArray=users.filter(user=>user.id===(identity?identity:user.id) );
+
+const {name,gender,phone}=filteredArray[0];
+
+const newNameInput = useRef();
+const newPhoneInput = useRef();
+const newGenderInput = useRef();
+
+useEffect(()=>{
+
+    newNameInput.current.value=name;
+    newPhoneInput.current.value=phone;
+    newGenderInput.current.value=gender
+},[name,gender,phone])
 
 
 
-  const newNameInput = useRef();
-  const newPhoneInput = useRef();
-  const newGenderInput = useRef();
-
-  const handleSubmit = (e) => {
-      e.preventDefault();
+const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(filteredArray)
 
    
    
@@ -56,6 +69,7 @@ const EditModule = (props) => {
                 <input
                   type="text"
                   className="form-control"
+                
                   ref={newNameInput}
                   id="exampleInputEmail1"
               
