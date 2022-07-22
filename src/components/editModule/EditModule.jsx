@@ -69,7 +69,7 @@ const handleSubmit = (e) => {
                 <input
                   type="text"
                   className="form-control"
-                
+                required
                   ref={newNameInput}
                   id="exampleInputEmail1"
               
@@ -81,6 +81,8 @@ const handleSubmit = (e) => {
                   type="number"
                   className="form-control"
                   ref={newPhoneInput}
+                  required
+                  minLength={6}
                   id="exampleInputEmail1"
                 />
                 <select
@@ -88,9 +90,10 @@ const handleSubmit = (e) => {
                   aria-label="Default select example"
                   ref={newGenderInput}
                 >
-                  <option defaultValue>Open this select menu</option>
+                
                   <option value="male">Male</option>
                   <option value="female">Female</option>
+                  <option value="prefer not to say">Prefer not to say</option>
                 </select>
 
                 <div className="modal-footer">
