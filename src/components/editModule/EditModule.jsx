@@ -5,8 +5,8 @@ const EditModule = (props) => {
    const { updateUser,identity,users}=props
 console.log(users,identity)
 // let filteredArray;
-const   filteredArray=users.filter(user=>user.id===(identity?identity:user.id) );
-
+let   filteredArray=users.filter(user=>user.id===(identity?identity:user.id) );
+filteredArray=filteredArray?filteredArray:users;
 const {name,gender,phone}=filteredArray[0];
 
 const newNameInput = useRef();
