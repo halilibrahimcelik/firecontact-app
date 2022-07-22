@@ -58,7 +58,7 @@ const Form = ({createUser}) => {
        
           <option value="male">male</option>
           <option value="female">female</option>
-          <option value={null}>rather not say</option>
+          <option value="Prefer not to say">Prefer not to say</option>
         </select>
         </div>
         <div className="input-group mb-3">
