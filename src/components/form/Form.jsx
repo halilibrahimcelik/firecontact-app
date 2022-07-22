@@ -9,7 +9,9 @@ const Form = ({createUser}) => {
   const newGenderInput = useRef("");
   const handleSubmit=e=>{
     e.preventDefault();
-    const enteredName = newNameInput.current.value;
+    console.log(newNameInput.current.value)
+
+    const enteredName = newNameInput.current.value
     const enteredPhone = newPhoneInput.current.value;
     const enteredGender = newGenderInput.current.value;
     createUser(enteredGender,enteredName,enteredPhone);
@@ -38,7 +40,8 @@ const Form = ({createUser}) => {
           required 
           className="form-control"
            placeholder="Username" 
-           ref={newNameInput}
+          //  ref={newNameInput}
+          ref={newNameInput}
            />
         </div>
         <div className="input-group mb-3">

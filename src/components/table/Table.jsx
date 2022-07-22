@@ -6,7 +6,7 @@ import {toast} from "react-toastify"
 const Table = ({users,updateUser,deleteUser}) => {
   const [identity,selectedId]=useState("");
   const handleDelete=(id)=>{
-    console.log(id)
+
     deleteUser(id);
     toast.success('You have succesfully deleted a contact!', {
       position: "top-right",
