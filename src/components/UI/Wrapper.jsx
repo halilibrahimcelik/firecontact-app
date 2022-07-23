@@ -8,17 +8,18 @@ import { db } from '../../helpers/firebase';
 
 const Wrapper = () => {
 const [users,setUsers]=useState([]);
-console.log(users)
+// console.log(users)
 const userCollectionRef=collection(db,"newUsers");
-
+console.log(users)
 
 
 const getUserInfo=useCallback(async()=>{
   try {
     const response= await getDocs(userCollectionRef);
 const {docs}=response;
+console.log(docs)
 
-setUsers(docs.map(doc=>({...doc.data(), id:doc.id})))
+setUsers(docs.map(doc=>({...doc.data(), id:doc.id, index:new Date().getTime()})))
   } catch (error) {
     console.log(error)
   }
@@ -37,7 +38,7 @@ const createUser=async(gender,name,phone)=>{
   }
   try {
     await addDoc(userCollectionRef,data);
-    getUserInfo();
+     getUserInfo();
   } catch (error) {
     
   }
@@ -46,8 +47,8 @@ const updateUser=async(id,gender,name,phone)=>{
   const userDoc=doc(db,"newUsers", id);//? userDoc ile hangi dosyaya refer ettiğimizi buluyoruz
   const newObject={
     gender:gender,
-    name:name,
-    phone:phone
+    phone:phone,
+    name:name
   }
   // console.log("fdad")
   // const filteredData=users.filter(data=>data.id!==id).map(()=>newObject)
@@ -58,6 +59,7 @@ const updateUser=async(id,gender,name,phone)=>{
 }
 const deleteUser=async(id)=>{
   const userDoc=doc(db,"newUsers", id); //? userDoc ile hangi dosyaya refer ettiğimizi buluyoruz
+  
 
   try {
     await deleteDoc(userDoc)
