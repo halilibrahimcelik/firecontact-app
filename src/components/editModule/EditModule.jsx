@@ -28,10 +28,6 @@ const EditModule = (props) => {
     let enteredPhone = newPhoneInput.current.value;
     let enteredGender = newGenderInput.current.value;
     console.log(enteredName);
-    if (enteredName === "") {
-      console.log("sdasd");
-      //    enteredName=name:enteredName;
-    }
 
     console.log(enteredGender);
     console.log(enteredName);
